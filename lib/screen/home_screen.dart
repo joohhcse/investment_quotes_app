@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:investment_quotes_app/screen/setting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,7 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _children = [
     ClipboardScreen(),
     FavoritesScreen(),
-    SettingsScreen(),
+    // SettingsScreen(),
+    SettingScreen()
   ];
 
   @override
@@ -70,22 +72,43 @@ class FavoritesScreen extends StatelessWidget {
     );
   }
 }
-
-class SettingsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      // child: Text('설정 화면'),
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-            )
-            , itemBuilder: (context, index) {
-          return GestureDetector(
-
-          );
-        }
-        )
-    );
-  }
-}
+//
+// class SettingsScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Column(
+//           children: [
+//             // SettingsScreen()
+//           ],
+//         )
+//       ),
+//     );
+//   }
+// }
+//
+// class SettingRow extends StatelessWidget {
+//   final IconData icon;
+//   final String title;
+//
+//   const SettingRow({Key? key, required this.icon, required this.title})
+//       : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 8),
+//       child: Row(
+//         children: [
+//           Icon(icon),
+//           SizedBox(width: 16),
+//           Text(
+//             title,
+//             style: TextStyle(fontSize: 16),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
