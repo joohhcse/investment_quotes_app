@@ -22,9 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('하단바 메뉴 예제'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('하단바 메뉴 예제'),
+      // ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

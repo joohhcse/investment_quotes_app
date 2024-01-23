@@ -8,9 +8,14 @@ class SettingScreen extends StatefulWidget {
 }
 
 class SettingState extends State<SettingScreen> {
+  int selectedOption = 1; // 초기 선택된 옵션
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Settings"),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,7 +46,43 @@ class SettingState extends State<SettingScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 16.0),
             // 추가적인 설정 항목들을 원하는 만큼 추가할 수 있습니다.
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    Radio(
+                      value: 1,
+                      groupValue: selectedOption,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = 1;
+                        });
+                      },
+                    ),
+                    Text('옵션 1'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Radio(
+                      value: 2,
+                      groupValue: selectedOption,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = 2;
+                        });
+                      },
+                    ),
+                    Text('옵션 2'),
+                  ],
+                ),
+                // Add more Radio buttons as needed
+              ],
+            ),
+            SizedBox(height: 16.0),
           ],
         ),
       ),
