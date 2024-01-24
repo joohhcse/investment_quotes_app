@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:investment_quotes_app/screen/setting_screen.dart';
+import 'package:investment_quotes_app/screen/favorite_list_screen.dart';
+import 'package:investment_quotes_app/screen/quotes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,9 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // 각 탭에 해당하는 화면들
   final List<Widget> _children = [
-    ClipboardScreen(),
-    FavoritesScreen(),
-    // SettingsScreen(),
+    QuotesScreen(),
+    FavoriteListScreen(),
     SettingScreen()
   ];
 
@@ -55,24 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ClipboardScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('클립보드 복사 화면'),
-    );
-  }
-}
-
-class FavoritesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('즐겨찾기 화면'),
-    );
-  }
-}
-//
 // class SettingsScreen extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
