@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // 각 탭에 해당하는 화면들
   final List<Widget> _children = [
     QuotesScreen(),
-    FavoriteListScreen(),
+    FavoriteListScreen(likedQuote: 'aaa'),  // likedQuote에 like된 저장된 명언들 불러오기 
     SettingScreen()
   ];
 
