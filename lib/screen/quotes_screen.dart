@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:investment_quotes_app/screen/favorite_list_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuotesScreen extends StatefulWidget {
   const QuotesScreen({super.key});
@@ -37,7 +40,8 @@ class _QuotesScreenState extends State<QuotesScreen> {
         itemBuilder: (context, index) {
           return QuotePage(
             quote: quotes[index],
-            onLike: () {
+            onLike: () async {
+              await addFavorite(quotes[index]);
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -50,6 +54,15 @@ class _QuotesScreenState extends State<QuotesScreen> {
         physics: BouncingScrollPhysics(),
       ),
     );
+  }
+
+  Future<void> addFavorite(String quote) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String>? favorites = prefs.getStringList('favorites') ?? [];
+    favorites.add(quote);
+    prefs.setStringList('favorites', favorites);
+    debugPrint('log > ');
+    debugPrint(favorites.toString());
   }
 }
 
