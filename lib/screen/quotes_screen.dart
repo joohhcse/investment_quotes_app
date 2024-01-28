@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:investment_quotes_app/screen/favorite_list_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:investment_quotes_app/database/database_helper.dart';
+
 
 class QuotesScreen extends StatefulWidget {
   const QuotesScreen({super.key});
@@ -30,6 +32,14 @@ class _QuotesScreenState extends State<QuotesScreen> {
   void initState() {
     super.initState();
     quotes.shuffle();
+    initializeDatabase(); //add
+  }
+
+  Future<void> initializeDatabase() async {
+    DatabaseHelper databaseHelper = DatabaseHelper();
+    await databaseHelper.initDatabase();
+    debugPrint('Database initialized in AnotherClass');
+    // 여기서 다른 작업을 수행할 수 있습니다.
   }
 
   @override
@@ -41,13 +51,15 @@ class _QuotesScreenState extends State<QuotesScreen> {
           return QuotePage(
             quote: quotes[index],
             onLike: () async {
-              await addFavorite(quotes[index]);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FavoriteListScreen(likedQuote: quotes[index]),
-                ),
-              );
+              // await addFavorite(quotes[index]);
+              await fetchDataExample();
+
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => FavoriteListScreen(likedQuote: quotes[index]),
+              //   ),
+              // );
             },
           );
         },
@@ -64,8 +76,13 @@ class _QuotesScreenState extends State<QuotesScreen> {
     debugPrint('log > ');
     debugPrint(favorites.toString());
   }
-}
 
+  Future<void> fetchDataExample() async {
+    List<Map<String, dynamic>> data = await DatabaseHelper().fetchData();
+    debugPrint('Fetched Data: $data');
+  }
+
+}
 
 class QuotePage extends StatelessWidget {
   final String quote;
@@ -73,19 +90,6 @@ class QuotePage extends StatelessWidget {
 
   // QuotePage({required this.quote});
   QuotePage({required this.quote, required this.onLike});
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(16.0),
-  //     child: Center(
-  //       child: Text(
-  //         quote,
-  //         style: TextStyle(fontSize: 20.0),
-  //       ),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {

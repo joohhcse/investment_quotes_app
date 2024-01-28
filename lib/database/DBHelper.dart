@@ -1,7 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-
 //https://toyou101.tistory.com/9
 class DBHelper {
   static final DBHelper _instance = DBHelper._(); // DBHelper의 싱글톤 객체 생성
