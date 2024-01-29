@@ -1,22 +1,31 @@
+import 'dart:ui_web';
+
 import 'package:flutter/material.dart';
 import 'package:investment_quotes_app/screen/setting_screen.dart';
 import 'package:investment_quotes_app/screen/favorite_list_screen.dart';
 import 'package:investment_quotes_app/screen/quotes_screen.dart';
 import 'package:investment_quotes_app/database/database_helper.dart';
+import 'package:investment_quotes_app/provider/app_provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final bool isDarkMode;
+
+  // const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({
+    required this.isDarkMode,   //db 같이 저장해서 관리해야함....
+
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   var db = new DatabaseHelper();
-
-
 
   // 각 탭에 해당하는 화면들
   final List<Widget> _children = [
@@ -31,35 +40,64 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('하단바 메뉴 예제'),
-      // ),
-      body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: onTabTapped,
-        items: [
-          BottomNavigationBarItem(
-            // icon: Icon(Icons.content_paste),
-            icon: Icon(Icons.copy),
-            label: '클립보드 복사',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: '즐겨찾기',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: '설정',
-          ),
-        ],
+    return MaterialApp(
+      // theme: isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      theme: ThemeData.light(),
+      home: Scaffold(
+        body: _children[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: onTabTapped,
+          items: [
+            BottomNavigationBarItem(
+              // icon: Icon(Icons.content_paste),
+              icon: Icon(Icons.copy),
+              label: '클립보드 복사',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: '즐겨찾기',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: '설정',
+            ),
+          ],
+        ),
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     // appBar: AppBar(
+  //     //   title: Text('하단바 메뉴 예제'),
+  //     // ),
+  //     body: _children[_currentIndex],
+  //     bottomNavigationBar: BottomNavigationBar(
+  //       currentIndex: _currentIndex,
+  //       onTap: onTabTapped,
+  //       items: [
+  //         BottomNavigationBarItem(
+  //           // icon: Icon(Icons.content_paste),
+  //           icon: Icon(Icons.copy),
+  //           label: '클립보드 복사',
+  //         ),
+  //         BottomNavigationBarItem(
+  //           icon: Icon(Icons.favorite),
+  //           label: '즐겨찾기',
+  //         ),
+  //         BottomNavigationBarItem(
+  //           icon: Icon(Icons.settings),
+  //           label: '설정',
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   void onTabTapped(int index) {
     setState(() {

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:investment_quotes_app/screen/home_screen.dart';
+import 'package:investment_quotes_app/provider/app_provider.dart';
+import 'package:provider/provider.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -8,7 +11,8 @@ class SettingScreen extends StatefulWidget {
 }
 
 class SettingState extends State<SettingScreen> {
-  int selectedOption = 1; // 초기 선택된 옵션
+  int selectedOption = 0; // 초기 선택된 옵션 ?
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,9 @@ class SettingState extends State<SettingScreen> {
                 Switch(
                   value: false, // 여기에 실제 설정값을 넣어주세요.
                   onChanged: (value) {
-                    // 설정값 변경 로직을 넣어주세요.
+                    setState(() {
+
+                    });
                   },
                 ),
               ],

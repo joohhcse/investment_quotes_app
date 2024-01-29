@@ -32,13 +32,13 @@ class _QuotesScreenState extends State<QuotesScreen> {
   void initState() {
     super.initState();
     quotes.shuffle();
-    initializeDatabase(); //add
+    // initializeDatabase(); //add
   }
 
   Future<void> initializeDatabase() async {
     DatabaseHelper databaseHelper = DatabaseHelper();
     await databaseHelper.initDatabase();
-    debugPrint('Database initialized in AnotherClass');
+    debugPrint('Database initialized in quotes_screen class');
     // 여기서 다른 작업을 수행할 수 있습니다.
   }
 

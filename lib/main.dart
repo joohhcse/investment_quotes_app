@@ -1,7 +1,20 @@
 import 'package:investment_quotes_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
+// import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
+
+  //////https://stackoverflow.com/questions/76158800/databasefactory-not-initialized-when-using-sqflite-in-flutter
+  // // Initialize FFI
+  // sqfliteFfiInit();
+  // databaseFactory = databaseFactoryFfi;
+
+  //sqflite 참고
+  ////https://sudarlife.tistory.com/entry/Flutter-%ED%94%8C%EB%9F%AC%ED%84%B0-SQFlite-%EB%AC%B8%EC%84%9C-%EC%A0%95%EB%A6%AC-%EB%B0%8F-%EC%98%88%EC%A0%9C%EB%A1%9C-%EB%A7%88%EC%8A%A4%ED%84%B0%ED%95%B4%EB%B3%B4%EC%9E%90
+
+  //totally 개발자 참고
+  //https://totally-developer.tistory.com/125
+
   runApp(
     MaterialApp(
       home: HomeScreen(),
