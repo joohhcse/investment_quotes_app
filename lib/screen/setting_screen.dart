@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:investment_quotes_app/screen/home_screen.dart';
 import 'package:investment_quotes_app/provider/app_provider.dart';
-import 'package:provider/provider.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);

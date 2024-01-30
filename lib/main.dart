@@ -1,6 +1,5 @@
 import 'package:investment_quotes_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
 

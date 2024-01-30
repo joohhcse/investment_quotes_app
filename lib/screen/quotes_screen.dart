@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:investment_quotes_app/screen/favorite_list_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:investment_quotes_app/database/database_helper.dart';
 
 
 class QuotesScreen extends StatefulWidget {
@@ -35,13 +34,6 @@ class _QuotesScreenState extends State<QuotesScreen> {
     // initializeDatabase(); //add
   }
 
-  Future<void> initializeDatabase() async {
-    DatabaseHelper databaseHelper = DatabaseHelper();
-    await databaseHelper.initDatabase();
-    debugPrint('Database initialized in quotes_screen class');
-    // 여기서 다른 작업을 수행할 수 있습니다.
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,9 +43,6 @@ class _QuotesScreenState extends State<QuotesScreen> {
           return QuotePage(
             quote: quotes[index],
             onLike: () async {
-              // await addFavorite(quotes[index]);
-              await fetchDataExample();
-
               // Navigator.push(
               //   context,
               //   MaterialPageRoute(
@@ -75,11 +64,6 @@ class _QuotesScreenState extends State<QuotesScreen> {
     prefs.setStringList('favorites', favorites);
     debugPrint('log > ');
     debugPrint(favorites.toString());
-  }
-
-  Future<void> fetchDataExample() async {
-    List<Map<String, dynamic>> data = await DatabaseHelper().fetchData();
-    debugPrint('Fetched Data: $data');
   }
 
 }
