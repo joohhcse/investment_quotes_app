@@ -14,6 +14,8 @@ void main() {
   //totally 개발자 참고
   //https://totally-developer.tistory.com/125
 
+  //https://iosroid.tistory.com/44
+
   runApp(
     MaterialApp(
       home: HomeScreen(),

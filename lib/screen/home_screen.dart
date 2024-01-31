@@ -3,6 +3,7 @@ import 'package:investment_quotes_app/screen/setting_screen.dart';
 import 'package:investment_quotes_app/screen/favorite_list_screen.dart';
 import 'package:investment_quotes_app/screen/quotes_screen.dart';
 import 'package:investment_quotes_app/database/database_config.dart';
+import 'package:investment_quotes_app/model/quote.dart';
 
 class HomeScreen extends StatefulWidget {
   // final bool isDarkMode;
@@ -23,6 +24,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final DatabaseConfig _databaseConfig = DatabaseConfig();
+  Future<List<Quote>> _quoteList = DatabaseConfig()
+      .databaseInit()
+      .then((_) => DatabaseConfig().selectQuotes());
+
+  // Quote newQuote = Quote(id: 1, quote: 'This is a new quote!', isLiked: false);
+  // _databaseConfig.insertQuote(newQuote);
 
   // 각 탭에 해당하는 화면들
   final List<Widget> _children = [
